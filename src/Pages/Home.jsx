@@ -306,58 +306,89 @@ const Portfolio = () => {
         </div>
       </div>
 
-      
+       
 
-         <nav
-      className={`fixed top-0 z-50 w-full lg:right-auto  border-zinc-950 rounded-3xl ${
-        showNavbar ? "top-6 translate-y-0" : "-translate-y-full"
-      } transition-all duration-300`}
-    >
-      <div className="max-w-96 mx-auto px-6 sm:px-8 md:px-10 lg:px-12 py-4 bg-black rounded-3xl border border-[#d4af37]/30 bg-gradient-to-r from-[#1a1a1a] via-[#2a2a2a] to-[#1f1f1f] shadow-lg">
-         <div className="hidden md:flex space-x-5">
-            {navItems.map((item, i) => (
-              <Link
-                key={item}
-                to={item === "Contact" ? "/contact" : `#${item.toLowerCase()}`}
-                onClick={() => {
-                  setCurrentSection(i);
-                  setMobileMenuOpen(false);
-                }}
-                className={`transition-colors ${
-                  currentSection === i
-                    ? "text-purple-400"
-                    : "text-white hover:text-purple-300"
-                }`}
-              >
-                {item}
-              </Link>
-            ))}
-          </div>
 
-        {/* Mobile Dropdown */}
-        {mobileMenuOpen && (
-          <div className="mt-4 flex flex-col space-y-3 md:hidden">
-            {navItems.map((item, i) => (
-              <Link
-                key={item}
-                to={item === "Contact" ? "/contact" : `#${item.toLowerCase()}`}
-                onClick={() => {
-                  setCurrentSection(i);
-                  setMobileMenuOpen(false);
-                }}
-                className={`transition-colors ${
-                  currentSection === i
-                    ? "text-purple-400"
-                    : "text-white hover:text-purple-300"
-                }`}
-              >
-                {item}
-              </Link>
-            ))}
-          </div>
-        )}
-      </div>
-    </nav>
+  <div className="hidden md:block">
+     <div
+  className={`fixed top-0 z-50 w-full lg:right-auto border-zinc-950  rounded-3xl ${
+    showNavbar ? "top-6 translate-y-0" : "-translate-y-full"
+  } transition-all duration-300`}
+>
+  <div className="md:w-full md:max-w-96   mx-auto px-6 sm:px-8 md:px-4 lg:px-12 py-4 bg-black rounded-3xl border border-[#d4af37]/30 bg-gradient-to-r from-[#1a1a1a] via-[#2a2a2a] to-[#1f1f1f] shadow-lg">
+    
+     
+    <div className="hidden md:flex space-x-5 justify-center">
+      {navItems.map((item, i) => (
+        <Link
+          key={item}
+          to={item === "Contact" ? "/contact" : `#${item.toLowerCase()}`}
+          onClick={() => {
+            setCurrentSection(i);
+            setMobileMenuOpen(false);
+          }}
+          className={`transition-colors ${
+            currentSection === i
+              ? "text-purple-400"
+              : "text-white hover:text-purple-300"
+          }`}
+        >
+          {item}
+        </Link>
+      ))}
+    </div>
+
+     
+     
+
+  </div>
+</div> 
+  </div>
+
+
+
+ 
+    <div className="mt-4 mr-2 flex justify-end md:hidden z-40 relative">
+  <button
+    onClick={() => setMobileMenuOpen((prev) => !prev)}
+    className="text-white text-2xl px-4 py-2 rounded-full bg-[#1f1f1f] border border-[#d4af37]/30 shadow-md"
+    aria-label="Toggle Menu"
+  >
+    {mobileMenuOpen ? "✕" : "☰"}
+  </button>
+</div>
+
+
+    
+     {mobileMenuOpen && (
+  <div className="mt-4 flex flex-col items-center space-y-3 md:hidden z-40 relative">
+    {navItems.map((item, i) => (
+      <Link
+        key={item}
+        to={item === "Contact" ? "/contact" : `#${item.toLowerCase()}`}
+        onClick={() => {
+          setCurrentSection(i);
+          setMobileMenuOpen(false);
+        }}
+        className={`transition-colors text-lg ${
+          currentSection === i
+            ? "text-purple-400"
+            : "text-white hover:text-purple-300"
+        }`}
+      >
+        {item}
+      </Link>
+    ))}
+  </div>
+)}
+
+
+
+
+
+
+     
+
 
 
       {/* Hero Section */}
@@ -401,7 +432,7 @@ const Portfolio = () => {
                     👋 Hello, I'm a ready to work
                   </span>
                 </div>
-                <h1 className="text-4xl md:text-7xl lg:text-7xl pb-3  font-bold mb-5 bg-gradient-to-r from-purple-400 via-pink-400 to-red-400 bg-clip-text text-transparent leading-loose ">
+                <h1 className="text-4xl md:text-7xl lg:text-7xl md:pb-4  font-bold  bg-gradient-to-r from-purple-400 via-pink-400 to-red-400 bg-clip-text text-transparent leading-loose ">
                   Akash  jain
                   <br />
                 </h1>
@@ -874,6 +905,8 @@ const Portfolio = () => {
           </p>
         </div>
       </footer>
+
+
     </div>
   );
 };
